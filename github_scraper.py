@@ -32,11 +32,11 @@ def users(usernames):
     except Exception as e:
         print(e)
     
-    user_details=soup.find_all('div',attrs={'class':"h-card mt-md-n5"})
-    for u in user_details:
-        st.image(u.find('img').attrs.get('src'),caption="profile photo")
-        st.header("FULL NAME")
-        st.write(u.find('span',attrs={'class':'p-name vcard-fullname d-block overflow-hidden'}).text)
+    user_details=soup.find('div',attrs={'class':"h-card mt-md-n5"})
+    
+    st.image(user_details.find('img').attrs.get('src'),caption="profile photo")
+    st.header("FULL NAME")
+    st.write(user_details.find('span',attrs={'class':'p-name vcard-fullname d-block overflow-hidden'}).text)
     try:
         st.title('user status')
         st.image(soup.find('g-emoji').attrs.get('fallback-src'),)
